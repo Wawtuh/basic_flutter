@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
             ),
             ...(questoins[_questionIndex]['answers'] as List<String>).map((answer){
               return Answer(_answerQuestion, answer);
-            }).toList()
+            }).toList()/// ...은 리스트 안에 리스트가 들어가게 생겼는데 이 안의 리스트의 원소를 쪼개서 넣어서 [A, [B, C, D]] => [A, B, C, D] 이렇게 만들어줌
           ],
         ),
       ),
