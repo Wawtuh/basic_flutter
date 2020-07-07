@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+
+import './question.dart';
 //void main() {
 //  runApp(MyApp());
 // }
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  void answerQuestion() {
-    print('Anwer chosen!');
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  int _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex++;
+    });
+    print(_questionIndex);
   }
 
   @override
@@ -23,11 +38,13 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('The question!'),
+            Question(
+              questoins[_questionIndex],
+            ),
             RaisedButton(
               child: Text('Answer 1'),
               onPressed:
-                  answerQuestion, // 포인터를 전달, answerQuestion() -> 결과값(void)를 전달
+                  _answerQuestion, // 포인터를 전달, answerQuestion() -> 결과값(void)를 전달
             ),
             RaisedButton(
               child: Text('Answer 2'),
